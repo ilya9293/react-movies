@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import NavItem from 'components/NavItem';
 
 function Header() {
   return (
@@ -7,10 +8,10 @@ function Header() {
       <nav>
         <ul className="mainMenu">
           <li className="mainMenu__item">
-            <p className="mainMenu__label">Home</p>
+            {<NavItem path={'/'} name={'Home'} />}
           </li>
           <li className="mainMenu__item">
-            <p className="mainMenu__label">Movies</p>
+            {<NavItem path={'/movies'} name={'Movies'} />}
           </li>
         </ul>
       </nav>
@@ -18,6 +19,6 @@ function Header() {
   );
 }
 
-Header.propTypes = {};
+// Header.propTypes = {};
 
 export default Header;

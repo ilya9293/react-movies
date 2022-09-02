@@ -49,6 +49,12 @@ p {
 .mainMenu__label {
   font-size: 20px;
   font-weight: 600;
+  text-decoration: none;
+  color: #000000;
+}
+
+.active {
+  color: #ff0000;
 }
 
 /* TrendMoviesPage */
@@ -69,4 +75,23 @@ p {
 
 .listTrendMovies__link {
   color: rgb(0, 17, 255);
+}
+
+/* Search Movies */
+.sectionForm {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.formMovies {
+}
+
+.formMovies__field {
+  width: 300px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.formMovies__btn {
+  padding: 6px 6px;
 }
