@@ -26,7 +26,7 @@ function MovieDetailsPage() {
     title,
     name,
     release_date,
-    popularity,
+    vote_average,
     overview,
     genres,
   } = movie;
@@ -49,7 +49,7 @@ function MovieDetailsPage() {
                 {name} {`(${realeaseMovie})`}
               </h1>
               <p className="userScore">{`User score: ${Math.round(
-                popularity * 10,
+                vote_average * 10,
               )}%`}</p>
               <h2 className="titleOverview">Overview</h2>
               <p className="overview">{overview}</p>
@@ -64,19 +64,21 @@ function MovieDetailsPage() {
             </div>
           </div>
           <div className="addInfo">
-            <h3 className="titleAddInfo">Additional information</h3>
-            <ul className="listInfo">
-              <li className="listInfo__item">
-                <a href="" className="listInfo__link">
-                  Cast
-                </a>
-              </li>
-              <li className="listInfo__item">
-                <a href="" className="listInfo__link">
-                  Reviews
-                </a>
-              </li>
-            </ul>
+            <section className="navAddInfo">
+              <h3 className="titleAddInfo">Additional information</h3>
+              <ul className="listInfo">
+                <li className="listInfo__item">
+                  <a href="" className="listInfo__link">
+                    Cast
+                  </a>
+                </li>
+                <li className="listInfo__item">
+                  <a href="" className="listInfo__link">
+                    Reviews
+                  </a>
+                </li>
+              </ul>
+            </section>
           </div>
         </>
       )}

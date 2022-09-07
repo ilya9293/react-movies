@@ -103,7 +103,7 @@ p {
 }
 .info {
   display: flex;
-  box-shadow: 0px 5px 10px #7c7a7a;
+  box-shadow: 0px 3px 10px #7c7a7a;
   padding-bottom: 10px;
 }
 .poster {
@@ -134,4 +134,22 @@ p {
 }
 
 .listGenres__text {
+}
+
+/* Aditional information */
+.navAddInfo {
+  padding-left: 15px;
+  padding-bottom: 20px;
+  /* box-shadow: 0px 1px 10px #7c7a7a; */
+}
+
+.titleAddInfo {
+  font-weight: 500;
+}
+.listInfo {
+  list-style: inside;
+}
+.listInfo__item {
+}
+.listInfo__link {
 }
