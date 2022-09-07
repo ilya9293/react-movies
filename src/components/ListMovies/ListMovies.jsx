@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function ListMovies({ movies }) {
   return (
@@ -7,9 +8,9 @@ function ListMovies({ movies }) {
       {movies.map(({ name, title, id }) => {
         return (
           <li key={id} className="listTrendMovies__item">
-            <a href="" className="listTrendMovies__link">
+            <Link to={`/movies/${id}`} className="listTrendMovies__link">
               {name} {title}
-            </a>
+            </Link>
           </li>
         );
       })}

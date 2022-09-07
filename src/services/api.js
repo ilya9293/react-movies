@@ -14,4 +14,11 @@ const apiSearch = async query => {
   return res.ok ? res.json() : Promise.reject(new Error(res.statusText));
 };
 
-export { apiTrends, apiSearch };
+const apiOneMovie = async id => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}&language=en-US`,
+  );
+  return res.ok ? res.json() : Promise.reject(new Error(res.statusText));
+};
+
+export { apiTrends, apiSearch, apiOneMovie };
