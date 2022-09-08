@@ -29,6 +29,10 @@ function MoviesPage() {
     const getSearchMovies = async () => {
       try {
         const { results } = await apiSearch(query);
+        if (!results.length) {
+          alert('Not Found. Please, change request');
+          return;
+        }
         setmovies(results);
       } catch (error) {
         alert('Something went wrong');

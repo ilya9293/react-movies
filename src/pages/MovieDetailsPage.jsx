@@ -1,19 +1,23 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { apiOneMovie } from '../services/api';
-import { useParams } from 'react-router-dom';
+import { Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import NavAddInfo from 'components/NavAddInfo';
+import Cast from 'components/Cast';
+import Reviews from 'components/Reviews';
+import avatar from '../images/avatar.jpg';
 
 function MovieDetailsPage() {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
+  const match = useRouteMatch();
 
   useEffect(() => {
     const getOneMovie = async () => {
       try {
         const data = await apiOneMovie(movieId);
         setMovie(data);
-        console.log(data);
       } catch (error) {
         alert('Something went wrong');
       }
@@ -22,6 +26,7 @@ function MovieDetailsPage() {
   }, [movieId]);
 
   const {
+    id,
     poster_path,
     title,
     name,
@@ -35,11 +40,15 @@ function MovieDetailsPage() {
 
   return (
     <section className="sectionOneMovie">
-      {poster_path && (
+      {id && (
         <>
           <div className="info">
             <img
-              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              src={
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                  : avatar
+              }
               alt={title}
               className="poster"
             />
@@ -68,18 +77,22 @@ function MovieDetailsPage() {
               <h3 className="titleAddInfo">Additional information</h3>
               <ul className="listInfo">
                 <li className="listInfo__item">
-                  <a href="" className="listInfo__link">
-                    Cast
-                  </a>
+                  <NavAddInfo path={`${match.url}/cast`} name={'Cast'} />
                 </li>
                 <li className="listInfo__item">
-                  <a href="" className="listInfo__link">
-                    Reviews
-                  </a>
+                  <NavAddInfo path={`${match.url}/reviews`} name={'Reviews'} />
                 </li>
               </ul>
             </section>
           </div>
+          <Switch>
+            <Route path={`${match.path}/cast`}>
+              <Cast />
+            </Route>
+            <Route path={`${match.path}/reviews`}>
+              <Reviews />
+            </Route>
+          </Switch>
         </>
       )}
     </section>

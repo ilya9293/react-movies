@@ -137,10 +137,14 @@ p {
 }
 
 /* Aditional information */
+.addInfo {
+  box-shadow: 0px 1px 10px #7c7a7a;
+}
+
 .navAddInfo {
   padding-left: 15px;
   padding-bottom: 20px;
-  /* box-shadow: 0px 1px 10px #7c7a7a; */
+  padding-top: 5px;
 }
 
 .titleAddInfo {
@@ -152,4 +156,35 @@ p {
 .listInfo__item {
 }
 .listInfo__link {
+}
+
+/* Cast */
+.listCast {
+  margin-left: 25px;
+  margin-top: 10px;
+}
+.listCast__item:not(:last-child) {
+  margin-bottom: 15px;
+}
+.listCast__img {
+  margin-bottom: 15px;
+  width: 90px;
+}
+.listCast__name {
+  margin-bottom: 10px;
+}
+.listCast__character {
+}
+
+/* Reviews */
+.listReview {
+  margin-left: 40px;
+}
+.listReview__item {
+}
+.titleReview {
+  font-size: 17px;
+}
+.textReview {
+  font-size: 15px;
 }
