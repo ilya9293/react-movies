@@ -36,19 +36,20 @@ function MoviesPage() {
         setmovies(results);
       } catch (error) {
         alert('Something went wrong');
+      } finally {
+        setIsClickSubmit(false);
       }
     };
 
     getSearchMovies();
-    setIsClickSubmit(false);
   }, [isClickSubmit, query]);
 
   const queryPath = new URLSearchParams(location.search).get('query');
 
   useEffect(() => {
     if (!queryPath) return;
-    setIsClickSubmit(true);
     setQuery(queryPath);
+    setIsClickSubmit(true);
   }, [queryPath]);
 
   return (

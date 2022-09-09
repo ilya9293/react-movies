@@ -1,17 +1,28 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { apiOneMovie } from '../services/api';
-import { Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+  useParams,
+  useRouteMatch,
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import NavAddInfo from 'components/NavAddInfo';
 import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 import avatar from '../images/avatar.jpg';
+import Button from 'components/Button';
 
 function MovieDetailsPage() {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
   const match = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
+  console.log(location);
 
   useEffect(() => {
     const getOneMovie = async () => {
@@ -38,8 +49,13 @@ function MovieDetailsPage() {
 
   const realeaseMovie = new Date(release_date).getFullYear();
 
+  const handleBack = () => {
+    history.push(location.state.from);
+  };
+
   return (
     <section className="sectionOneMovie">
+      <Button onClick={handleBack} name={'movies'} />
       {id && (
         <>
           <div className="info">
@@ -77,10 +93,18 @@ function MovieDetailsPage() {
               <h3 className="titleAddInfo">Additional information</h3>
               <ul className="listInfo">
                 <li className="listInfo__item">
-                  <NavAddInfo path={`${match.url}/cast`} name={'Cast'} />
+                  <NavAddInfo
+                    path={`${match.url}/cast`}
+                    name={'Cast'}
+                    location={location}
+                  />
                 </li>
                 <li className="listInfo__item">
-                  <NavAddInfo path={`${match.url}/reviews`} name={'Reviews'} />
+                  <NavAddInfo
+                    path={`${match.url}/reviews`}
+                    name={'Reviews'}
+                    location={location}
+                  />
                 </li>
               </ul>
             </section>

@@ -99,7 +99,7 @@ p {
 
 /* One Movie */
 .sectionOneMovie {
-  padding-top: 25px;
+  padding-top: 10px;
 }
 .info {
   display: flex;
@@ -187,4 +187,11 @@ p {
 }
 .textReview {
   font-size: 15px;
+}
+
+/* Button */
+.button {
+  padding: 5px 10px;
+  font-size: 15px;
+  margin-bottom: 5px;
 }
