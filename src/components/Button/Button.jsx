@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Button({ name, onClick }) {
   return (
     <button onClick={onClick} className="button">
-      Go back to {name}
+      Go back to {name === '/movies' ? 'Movies' : 'Home'}
     </button>
   );
 }

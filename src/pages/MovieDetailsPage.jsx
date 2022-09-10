@@ -1,4 +1,4 @@
-import React from 'react';
+import notify from 'services/tostify';
 // import PropTypes from 'prop-types';
 import { apiOneMovie } from '../services/api';
 import {
@@ -22,7 +22,6 @@ function MovieDetailsPage() {
   const match = useRouteMatch();
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     const getOneMovie = async () => {
@@ -30,11 +29,13 @@ function MovieDetailsPage() {
         const data = await apiOneMovie(movieId);
         setMovie(data);
       } catch (error) {
-        alert('Something went wrong');
+        //   alert('Something went wrong');
+        notify('Something went wrong');
+        history.replace('/');
       }
     };
     getOneMovie();
-  }, [movieId]);
+  }, [history, movieId]);
 
   const {
     id,
@@ -50,12 +51,12 @@ function MovieDetailsPage() {
   const realeaseMovie = new Date(release_date).getFullYear();
 
   const handleBack = () => {
-    history.push(location.state.from);
+    history.push(location.state?.from ?? '/');
   };
 
   return (
     <section className="sectionOneMovie">
-      <Button onClick={handleBack} name={'movies'} />
+      <Button onClick={handleBack} name={location.state?.from?.pathname} />
       {id && (
         <>
           <div className="info">

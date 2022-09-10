@@ -1,4 +1,4 @@
-import React from 'react';
+import notify from 'services/tostify';
 // import PropTypes from 'prop-types';
 import { apiTrends } from '../services/api';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ function HomePage() {
         const { results } = await apiTrends();
         setMovies(results);
       } catch (error) {
-        alert('Something went wrong');
+        notify('Something went wrong');
       }
     };
     fetchTrendMovies();

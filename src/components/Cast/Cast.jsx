@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import notify from 'services/tostify';
 // import PropTypes from 'prop-types';
 import { apiCast } from '../../services/api';
 import { useParams } from 'react-router-dom';
@@ -13,7 +14,8 @@ function Cast() {
         const { cast } = await apiCast(movieId);
         setMovieCast(cast);
       } catch (error) {
-        alert('Something went wrong');
+        notify('Something went wrong');
+        //   alert('Something went wrong');
       }
     };
     getCast();

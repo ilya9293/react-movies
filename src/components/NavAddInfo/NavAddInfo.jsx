@@ -8,7 +8,7 @@ function NavAddInfo({ path, name, location }) {
       to={{
         pathname: path,
         state: {
-          from: location.state.from,
+          from: location.state?.from,
         },
       }}
       className={'listInfo__link'}

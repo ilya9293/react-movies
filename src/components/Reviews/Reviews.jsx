@@ -1,4 +1,4 @@
-import React from 'react';
+import notify from 'services/tostify';
 // import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -13,7 +13,8 @@ function Reviews() {
         const { results } = await apiReview(movieId);
         setReviews(results);
       } catch (error) {
-        alert('Something went wrong');
+        //   alert('Something went wrong');
+        notify('Something went wrong');
       }
     };
     getReviews();

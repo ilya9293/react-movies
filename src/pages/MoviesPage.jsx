@@ -1,9 +1,8 @@
 import ListMovies from 'components/ListMovies';
+import notify from '../services/tostify';
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { apiSearch } from '../services/api';
-
-// import PropTypes from 'prop-types';
 
 function MoviesPage() {
   const [query, setQuery] = useState('');
@@ -16,9 +15,14 @@ function MoviesPage() {
 
   const handleSearchMovies = e => {
     e.preventDefault();
+    if (!query.trim()) {
+      // alert('Enter your request');
+      notify('Enter your request');
+      return;
+    }
     history.push({
       ...location,
-      search: `query=${query}`,
+      search: `query=${query.trim()}`,
     });
     setIsClickSubmit(true);
   };
@@ -30,12 +34,14 @@ function MoviesPage() {
       try {
         const { results } = await apiSearch(query);
         if (!results.length) {
-          alert('Not Found. Please, change request');
+          //  alert('Not Found. Please, change request');
+          notify('Not Found. Please, change request');
           return;
         }
         setmovies(results);
       } catch (error) {
-        alert('Something went wrong');
+        //   alert('Something went wrong');
+        notify('Something went wrong');
       } finally {
         setIsClickSubmit(false);
       }
@@ -70,7 +76,5 @@ function MoviesPage() {
     </section>
   );
 }
-
-// MoviesPage.propTypes = {};
 
 export default MoviesPage;
