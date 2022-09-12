@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import notify from 'services/tostify';
 // import PropTypes from 'prop-types';
 import { apiOneMovie } from '../services/api';
@@ -11,10 +12,16 @@ import {
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import NavAddInfo from 'components/NavAddInfo';
-import Cast from 'components/Cast';
-import Reviews from 'components/Reviews';
+// import Cast from 'components/Cast';
+// import Reviews from 'components/Reviews';
 import avatar from '../images/avatar.jpg';
 import Button from 'components/Button';
+const Cast = lazy(() =>
+  import('../components/Cast' /* webpackChunkName: "Cast" */),
+);
+const Reviews = lazy(() =>
+  import('../components/Reviews' /* webpackChunkName: "Reviews" */),
+);
 
 function MovieDetailsPage() {
   const [movie, setMovie] = useState({});
@@ -110,14 +117,16 @@ function MovieDetailsPage() {
               </ul>
             </section>
           </div>
-          <Switch>
-            <Route path={`${match.path}/cast`}>
-              <Cast />
-            </Route>
-            <Route path={`${match.path}/reviews`}>
-              <Reviews />
-            </Route>
-          </Switch>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route path={`${match.path}/cast`}>
+                <Cast />
+              </Route>
+              <Route path={`${match.path}/reviews`}>
+                <Reviews />
+              </Route>
+            </Switch>
+          </Suspense>
         </>
       )}
     </section>
