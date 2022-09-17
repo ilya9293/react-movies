@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
 import notify from 'services/tostify';
-// import PropTypes from 'prop-types';
 import { apiOneMovie } from '../services/api';
 import {
   Route,
@@ -132,7 +131,5 @@ function MovieDetailsPage() {
     </section>
   );
 }
-
-// MovieDetailsPage.propTypes = {};
 
 export default MovieDetailsPage;
