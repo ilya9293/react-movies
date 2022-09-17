@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 function NavItem({ path, name }) {
   return (
     <NavLink
-      exact
+      exact={path === '/' ? true : false}
       to={path}
       className={'mainMenu__label'}
       activeClassName={'active'}
